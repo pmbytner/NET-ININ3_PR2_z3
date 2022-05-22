@@ -6,8 +6,69 @@
         xmlns:local="clr-namespace:NET_ININ3_PR2_z3"
         mc:Ignorable="d"
         
-        Title="OknoSzczegółów" Height="550" Width="500">
+        Title="OknoSzczegółów"
+        Height="550"
+        Width="500"
+        FontSize="24"
+        >
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label
+            Grid.ColumnSpan="2"
+            Content="{Binding ImięNazwisko}"
+            />
         
+        <Label
+            Grid.Row="1"
+            >
+            Imię
+        </Label>
+        <TextBox
+            Grid.Row="1"
+            Grid.Column="1"
+            Text="{Binding Imię}"
+            />
+        
+        <Label
+            Grid.Row="2"
+            >
+            Nazwisko
+        </Label>
+        <TextBox
+            Grid.Row="2"
+            Grid.Column="1"
+            Text="{Binding Nazwisko}"
+            />
+        
+        <Label
+            Grid.Row="3"
+            >
+            Data urodzenia
+        </Label>
+        
+        
+        <Label
+            Grid.Row="4"
+            >
+            Data śmierci
+        </Label>
+
+        <Button
+            Grid.Column="1"
+            Grid.Row="5"
+            >
+            OK
+        </Button>
     </Grid>
 </Window>

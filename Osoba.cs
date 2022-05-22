@@ -64,9 +64,9 @@ namespace NET_ININ3_PR2_z3
             Nazwisko = nazwisko;
         }
         public Osoba() {}
-        public override string ToString()
+        /*public override string ToString()
         {
             return ImięNazwisko;
-        }
+        }*/
     }
 }
