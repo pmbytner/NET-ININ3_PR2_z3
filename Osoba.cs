@@ -16,12 +16,20 @@ namespace NET_ININ3_PR2_z3
             {
                 ["Imię"] = new string[] {"ImięNazwisko"}
             };
-        void OnPropertyChanged([CallerMemberName] string właściwość = null)
+        void OnPropertyChanged(
+            [CallerMemberName] string właściwość = null,
+            HashSet<string> załatwioneWłaściwości = null
+            )
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(właściwość));
-            foreach (string powiązanaWłaściwość in powiązaneWłaściwości[właściwość])
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(powiązanaWłaściwość));
+            if (załatwioneWłaściwości == null)
+                załatwioneWłaściwości = new HashSet<string>();
 
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(właściwość));
+            załatwioneWłaściwości.Add(właściwość);
+
+            foreach (string powiązanaWłaściwość in powiązaneWłaściwości[właściwość])
+                if(!załatwioneWłaściwości.Contains(powiązanaWłaściwość))
+                    OnPropertyChanged(powiązanaWłaściwość, załatwioneWłaściwości);
         }
 
     }
