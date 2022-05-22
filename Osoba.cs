@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NET_ININ3_PR2_z3
 {
-    class Osoba : INotifyPropertyChanged
+    public class Osoba : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         readonly static Dictionary<string, string[]> powiązaneWłaściwości

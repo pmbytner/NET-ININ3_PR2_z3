@@ -25,5 +25,13 @@ namespace NET_ININ3_PR2_z3
             DataContext = new Model();
             InitializeComponent();
         }
+
+        private void WyświetlSzczegóły(object sender, RoutedEventArgs e)
+        {
+            ListBox listaOsób = (ListBox)this.FindName("ListaDanych");
+            Osoba dlaKogo = (Osoba)listaOsób.SelectedItem;
+            if(dlaKogo != null)
+                (new OknoSzczegółów(dlaKogo)).Show();
+        }
     }
 }
