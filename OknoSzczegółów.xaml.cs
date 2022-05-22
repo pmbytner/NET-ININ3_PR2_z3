@@ -24,5 +24,10 @@ namespace NET_ININ3_PR2_z3
             DataContext = osoba;
             InitializeComponent();
         }
+
+        private void OK(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -14,8 +14,12 @@ namespace NET_ININ3_PR2_z3
         readonly static Dictionary<string, string[]> powiązaneWłaściwości
             = new Dictionary<string, string[]>()
             {
-                ["Imię"] = new string[] {"ImięNazwisko"},
-                ["Nazwisko"] = new string[] {"ImięNazwisko"},
+                ["Imię"] = new string[] { "ImięNazwisko" },
+                ["Nazwisko"] = new string[] { "ImięNazwisko" },
+                ["DataUrodzenia"] = new string[] { "Wiek" },
+                ["DataŚmierci"] = new string[] { "Wiek" },
+                ["Wiek"] = new string[] { "Szczegóły" },
+                ["ImięNazwisko"] = new string[] { "Szczegóły" },
             };
         void OnPropertyChanged(
             [CallerMemberName] string właściwość = null,
@@ -34,6 +38,10 @@ namespace NET_ININ3_PR2_z3
                         OnPropertyChanged(powiązanaWłaściwość, załatwioneWłaściwości);
         }
 
+        DateTime?
+            dataUrodzenia = null,
+            dataŚmierci = null
+            ;
         string
             imię,
             nazwisko
@@ -58,7 +66,45 @@ namespace NET_ININ3_PR2_z3
 
         public string ImięNazwisko => $"{imię} {nazwisko}";
 
-        public Osoba(string imię, string nazwisko)
+        public DateTime? DataUrodzenia {
+            get => dataUrodzenia;
+            set {
+                dataUrodzenia = value;
+                OnPropertyChanged();
+            }
+        }
+        public DateTime? DataŚmierci {
+            get => dataŚmierci;
+            set
+            {
+                dataŚmierci = value;
+                OnPropertyChanged();
+            }
+        }
+        public string Wiek
+        {
+            get
+            {
+                if (dataUrodzenia == null)
+                    return "BD";
+
+                DateTime? koniec;
+                if (dataŚmierci == null)
+                    koniec = DateTime.Now;
+                else
+                    koniec = dataŚmierci;
+
+                TimeSpan czasŻycia = (TimeSpan)(koniec - dataUrodzenia);
+
+                return Math.Ceiling(czasŻycia.Days / 365.25).ToString();
+            }
+        }
+        public string Szczegóły => $"{ImięNazwisko}, {Wiek} lat(a)";
+
+        public Osoba(
+            string imię,
+            string nazwisko
+            )
         {
             Imię = imię;
             Nazwisko = nazwisko;
