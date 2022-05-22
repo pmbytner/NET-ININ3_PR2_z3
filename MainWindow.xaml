@@ -1,0 +1,42 @@
+﻿<Window x:Class="NET_ININ3_PR2_z3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NET_ININ3_PR2_z3"
+        mc:Ignorable="d"
+        
+        Title="MainWindow"
+        Height="600"
+        Width="500"
+        FontSize="18"
+        >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <ListBox
+            Name="ListaDanych"
+            Grid.ColumnSpan="2"
+            />
+        <Button
+            Grid.Column="0"
+            Grid.Row="1"
+            >
+            Szczegóły
+        </Button>
+        <Button
+            Grid.Column="1"
+            Grid.Row="1"
+            >
+            Dodaj
+        </Button>
+
+    </Grid>
+</Window>
