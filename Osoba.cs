@@ -32,5 +32,28 @@ namespace NET_ININ3_PR2_z3
                     OnPropertyChanged(powiązanaWłaściwość, załatwioneWłaściwości);
         }
 
+        string
+            imię,
+            nazwisko
+            ;
+
+        public string Imię {
+            get => imię;
+            set
+            {
+                imię = value;
+                OnPropertyChanged();
+            }
+        }
+        public string Nazwisko {
+            get => nazwisko;
+            set
+            {
+                nazwisko = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ImięNazwisko => $"{imię} {nazwisko}";
     }
 }
