@@ -55,5 +55,13 @@ namespace NET_ININ3_PR2_z3
         }
 
         public string ImięNazwisko => $"{imię} {nazwisko}";
+
+
+        public Osoba(string imię, string nazwisko)
+        {
+            Imię = imię;
+            Nazwisko = nazwisko;
+        }
+        public Osoba() {}
     }
 }

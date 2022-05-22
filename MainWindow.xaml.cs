@@ -22,6 +22,7 @@ namespace NET_ININ3_PR2_z3
     {
         public MainWindow()
         {
+            DataContext = new Model();
             InitializeComponent();
         }
     }
