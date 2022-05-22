@@ -9,7 +9,7 @@ namespace NET_ININ3_PR2_z3
     class Model
     {
         LinkedList<Osoba> osoby = new LinkedList<Osoba>();
-        internal LinkedList<Osoba> Osoby { get => osoby; set => osoby = value; }
+        public LinkedList<Osoba> Osoby { get => osoby; set => osoby = value; }
 
         public Model()
         {

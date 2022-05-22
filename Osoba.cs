@@ -14,7 +14,8 @@ namespace NET_ININ3_PR2_z3
         readonly static Dictionary<string, string[]> powiązaneWłaściwości
             = new Dictionary<string, string[]>()
             {
-                ["Imię"] = new string[] {"ImięNazwisko"}
+                ["Imię"] = new string[] {"ImięNazwisko"},
+                ["Nazwisko"] = new string[] {"ImięNazwisko"},
             };
         void OnPropertyChanged(
             [CallerMemberName] string właściwość = null,
@@ -27,9 +28,10 @@ namespace NET_ININ3_PR2_z3
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(właściwość));
             załatwioneWłaściwości.Add(właściwość);
 
-            foreach (string powiązanaWłaściwość in powiązaneWłaściwości[właściwość])
-                if(!załatwioneWłaściwości.Contains(powiązanaWłaściwość))
-                    OnPropertyChanged(powiązanaWłaściwość, załatwioneWłaściwości);
+            if(powiązaneWłaściwości.ContainsKey(właściwość))
+                foreach (string powiązanaWłaściwość in powiązaneWłaściwości[właściwość])
+                    if(!załatwioneWłaściwości.Contains(powiązanaWłaściwość))
+                        OnPropertyChanged(powiązanaWłaściwość, załatwioneWłaściwości);
         }
 
         string
@@ -56,12 +58,15 @@ namespace NET_ININ3_PR2_z3
 
         public string ImięNazwisko => $"{imię} {nazwisko}";
 
-
         public Osoba(string imię, string nazwisko)
         {
             Imię = imię;
             Nazwisko = nazwisko;
         }
         public Osoba() {}
+        public override string ToString()
+        {
+            return ImięNazwisko;
+        }
     }
 }

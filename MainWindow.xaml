@@ -24,6 +24,7 @@
         <ListBox
             Name="ListaDanych"
             Grid.ColumnSpan="2"
+            ItemsSource="{Binding Osoby}"
             />
         <Button
             Grid.Column="0"
