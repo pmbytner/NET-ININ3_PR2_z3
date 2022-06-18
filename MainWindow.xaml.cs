@@ -41,5 +41,10 @@ namespace NET_ININ3_PR2_z3
             ListBox listaOsób = (ListBox)this.FindName("ListaDanych");
             (new OknoSzczegółów(nowa)).Show();
         }
+
+        private void Zapisz(object sender, RoutedEventArgs e)
+        {
+            model.Serializuj();
+        }
     }
 }

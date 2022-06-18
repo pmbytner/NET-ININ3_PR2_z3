@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace NET_ININ3_PR2_z3
 {
@@ -110,9 +111,29 @@ namespace NET_ININ3_PR2_z3
             Nazwisko = nazwisko;
         }
         public Osoba() {}
-        /*public override string ToString()
+
+        public Osoba(XmlNode węzeł)//??!!??
         {
-            return ImięNazwisko;
-        }*/
+            Imię = węzeł.SelectSingleNode("Imię").InnerText;
+            Nazwisko = węzeł.SelectSingleNode("Nazwisko").InnerText;
+
+            XmlNode dataU = węzeł.SelectSingleNode("DataŚmierci");
+            if(dataU.Attributes.GetNamedItem("xsi:nil").Value != "true")
+                DataUrodzenia = XmlConvert.ToDateTime(
+                    węzeł.SelectSingleNode("DataUrodzenia").InnerText,
+                    XmlDateTimeSerializationMode.Local
+                    );
+
+            XmlNode dataS = węzeł.SelectSingleNode("DataŚmierci");
+            if(dataS.Attributes.GetNamedItem("xsi:nil").Value != "true")
+                DataŚmierci = XmlConvert.ToDateTime(
+                    dataS.InnerText,
+                    XmlDateTimeSerializationMode.Local
+                    );
+        }
+        /*public override string ToString()
+{
+   return ImięNazwisko;
+}*/
     }
 }

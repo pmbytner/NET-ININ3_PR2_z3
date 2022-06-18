@@ -15,6 +15,7 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -43,6 +44,13 @@
             Grid.Row="1" Click="NowyElement"
             >
             Dodaj
+        </Button>
+        <Button
+            Grid.ColumnSpan="2"
+            Grid.Row="2"
+            Click="Zapisz"
+            >
+            Zapisz
         </Button>
 
     </Grid>
