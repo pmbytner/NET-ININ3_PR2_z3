@@ -20,9 +20,10 @@ namespace NET_ININ3_PR2_z3
     /// </summary>
     public partial class MainWindow : Window
     {
+        Model model = new Model();
         public MainWindow()
         {
-            DataContext = new Model();
+            DataContext = model;
             InitializeComponent();
         }
 
@@ -32,6 +33,13 @@ namespace NET_ININ3_PR2_z3
             Osoba dlaKogo = (Osoba)listaOsób.SelectedItem;
             if(dlaKogo != null)
                 (new OknoSzczegółów(dlaKogo)).Show();
+        }
+
+        private void NowyElement(object sender, RoutedEventArgs e)
+        {
+            Osoba nowa = model.DodajNowąOsobę();
+            ListBox listaOsób = (ListBox)this.FindName("ListaDanych");
+            (new OknoSzczegółów(nowa)).Show();
         }
     }
 }
